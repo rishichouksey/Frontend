@@ -1,0 +1,13 @@
+@import 'styles/variables.scss';
+
+table {
+    width: 100% !important;
+    //height: 500px !important;
+    max-height: 500px !important;
+    font-size: 90% !important;
+}
+
+thead > tr > th {
+    cursor: pointer;
+    color: blue !important;
+}

@@ -1,0 +1,17 @@
+<nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="../assets/img/images.png" width="140" height="40" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" data-cy="topNavToggleSideNav"
+        (click)="toggleSideNav()">
+        <fa-icon [icon]='["fas", "bars"]'></fa-icon>
+    </button>
+    <span class="d-none d-md-inline-block ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <b class="sizeMedium">
+            <font color='#ed1c25'>DEMO</font>
+        </b>
+    </span>
+    <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <sb-top-nav-user></sb-top-nav-user>
+    </ul>
+</nav>

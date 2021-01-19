@@ -1,0 +1,7 @@
+﻿<div *ngIf="(message!=null) && message!=''"
+    [ngClass]="{'alert alert-success': type === 'success', 'alert alert-danger': type === 'error' }">
+    <span>{{message}}</span>
+    <a class="close" (click)="removeAlert()">&times;</a>
+</div>
+
+ 

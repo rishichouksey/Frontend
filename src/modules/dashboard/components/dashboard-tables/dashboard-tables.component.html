@@ -1,0 +1,137 @@
+<sb-card [borderColor]="'border-info'">
+  <div class="card-header bg-info text-white">
+    <fa-icon class="mr-1" [icon]='["fas", "table"]'></fa-icon>Employee Data
+  </div>
+  <div class="card-body">
+    <div class="row mx-2">
+      <div class="col-md-3 "></div>
+      <div class="col-md-3 "></div>
+      <div class="col-md-3 "></div>
+      <div class="col-md-3 ">
+        <div class="form-group">
+          <button class="btn btn-block btn-success " (click)="addNewEmployeeData()">
+            Add Employee</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="isNewRecord" class="accordion">
+      <form [formGroup]="employeeForm">
+        <div class="row mx-2">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="firstName" class="small"> *First Name</label>
+              <input class="form-control" type="text" formControlName="firstName"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" placeholder="First Name" />
+              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">Required Field</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="lastName" class="small"> *Last Name</label>
+              <input class="form-control" type="text" formControlName="lastName"
+                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" placeholder="Last Name" />
+              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">Required Field</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="emailId" class="small"> *Email Id</label>
+              <input class="form-control" type="text" formControlName="emailId"
+                [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }" placeholder="Email Id" />
+              <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+                <div *ngIf="f.emailId.errors.required">Required Field</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="address" class="small">*Address</label>
+              <input class="form-control" type="text" formControlName="address"
+                [ngClass]="{ 'is-invalid': submitted && f.address.errors }" placeholder="Address" />
+              <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Required Field</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="dob" class="small">*DOB</label>
+              <input class="form-control" type="text" [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2"
+                  formControlName="dob" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }"  
+                  placeholder="MM/DD/YYYY" />     
+                <owl-date-time [pickerType]="'calendar'" #dtPicker2></owl-date-time>
+              <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                <div *ngIf="f.dob.errors.required">Required Field</div>     
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="mobile" class="small">*Mobile</label>
+              <input class="form-control" type="text" formControlName="mobile"
+                [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" placeholder="Mobile" />
+              <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                <div *ngIf="f.mobile.errors.required">Required Field</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="city" class="small">City</label>
+              <input class="form-control" type="text" formControlName="city"
+                [ngClass]="{ 'is-invalid': submitted && f.city.errors }" placeholder="City" />
+              <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                <div *ngIf="f.city.errors.required">Required Field</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <button type="submit" class="btn btn-block btn-primary" (click)="saveData()">
+                Submit</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="row mx-3">
+      <table class="table table-bordered">
+        <thead class="thead">
+          <tr class="text-left">
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+            <th scope="col">Email Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">City</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of employeeData" class="text-left">
+            <td><button (click)="deleteData(item.id)">Delete</button></td>
+            <td><button (click)="editData(item.id)">Update</button></td>
+            <td>{{item.emailId}}</td>
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.dob | date: 'dd-MMM-yyyy'}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.city}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</sb-card>

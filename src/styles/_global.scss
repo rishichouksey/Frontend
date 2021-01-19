@@ -1,0 +1,19 @@
+// Global styling for this template
+
+html,
+body {
+  height: 100%;
+  font-size: 90% !important;
+}
+
+// Set spacing on containers for page symmetry
+
+.container,
+.container-fluid {
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
+}
+
+.sizeMedium {
+  font-size: 1.5rem;
+}
